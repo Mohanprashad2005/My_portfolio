@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R. Mohanprashad | IoT & AI Innovator</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* Custom properties for easy color changing */
+        :root {
+            --dark-bg: #10051C;
+            --dark-text: #E0E0FF;
+            --neon-purple: #9D3CFF;
+            --neon-cyan: #00FFFF;
+            --card-bg: #1A0A2C;
+            --secondary-card-bg: #200E3A;
+        }
+
+        /* Base Styles & Dark Mode */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg); /* Initial color */
+            color: var(--dark-text);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            transition: background-color 3s ease-in-out; /* Smooth transition for dynamic BG */
+        }
+
+        .neon-cyan {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+        }
+
+        .section-padding {
+            padding: 80px 5%;
+        }
+        
+        .subtitle {
+            text-align: center;
+            margin-bottom: 70px;
+            color: #A0A0B0;
+            font-size: 1.1em;
+        }
+
+        /* --- FLYING/SCROLL ANIMATION SETUP --- */
+        .fly-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1), transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .fly-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* --- END ANIMATION SETUP --- */
+
+
+        /* Header & Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: rgba(16, 5, 28, 0.95);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--neon-purple);
+            text-shadow: 0 0 8px rgba(157, 60, 255, 0.8);
+        }
+
+        nav a {
+            color: var(--dark-text);
+            text-decoration: none;
+            margin-left: 25px;
+            padding: 5px 0;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        .btn-contact {
+            background-color: var(--neon-cyan);
+            color: var(--dark-bg);
+            padding: 8px 20px;
+            border-radius: 5px;
+            margin-left: 30px;
+            font-weight: bold;
+            box-shadow: 0 0 15px var(--neon-cyan);
+            transition: transform 0.2s, box-shadow 0.3s, background-color 0.3s;
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px var(--neon-cyan);
+            background-color: var(--neon-cyan);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            padding-top: 100px;
+        }
+
+        .hero-content {
+            max-width: 55%;
+        }
+
+        .welcome-text {
+            color: var(--neon-purple);
+            font-size: 0.9em;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin: 10px 0;
+        }
+
+        .hero h2 {
+            font-size: 1.8em;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons a {
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+        }
+
+        .btn-primary {
+            background-color: var(--neon-purple);
+            color: var(--dark-text);
+            box-shadow: 0 0 10px rgba(157, 60, 255, 0.7);
+            margin-right: 20px;
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            background: transparent;
+        }
+
+        .btn-primary:hover, .btn-secondary:hover {
+            transform: translateY(-2px);
+        }
+
+        .social-links {
+            margin-top: 40px;
+        }
+
+        .social-links a {
+            color: var(--dark-text);
+            font-size: 1.5em;
+            margin-right: 15px;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        .hero-image {
+            width: 40%;
+            padding: 20px;
+            animation: pulse 4s infinite alternate;
+        }
+
+        .profile-pic {
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+            display: block;
+            border: 3px solid var(--neon-purple);
+            box-shadow: 0 0 20px var(--neon-purple);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        @keyframes pulse {
+            from {
+                transform: scale(1);
+                opacity: 0.9;
+            }
+            to {
+                transform: scale(1.02);
+                opacity: 1;
+            }
+        }
+
+        /* General Section Styling */
+        h2 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--neon-purple);
+            text-shadow: 0 0 10px rgba(157, 60, 255, 0.5);
+        }
+        
+        /* NEW: Philosophy Quote Style */
+        .philosophy-quote {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: var(--neon-cyan);
+            text-align: center;
+            margin: 30px auto 40px;
+            max-width: 800px;
+            line-height: 1.3;
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.6);
+        }
+
+
+        hr {
+            border: none;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(0, 255, 255, 0.3), transparent);
+            margin: 20px 0;
+        }
+
+        /* --- SKILLS SECTION STYLES --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skill-category {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(157, 60, 255, 0.2); 
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(157, 60, 255, 0.3);
+        }
+
+        .category-header {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: var(--neon-purple);
+            margin-bottom: 20px;
+            border-bottom: 2px solid rgba(157, 60, 255, 0.2);
+            padding-bottom: 10px;
+        }
+        
+        .category-header i {
+            margin-right: 10px;
+        }
+
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .progress-bar {
+            width: 50%;
+            height: 8px;
+            background-color: #2D144A;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-bar div {
+            height: 100%;
+            background-color: var(--neon-purple);
+            color: transparent;
+            border-radius: 4px;
+            transition: width 1.5s ease-out;
+        }
+
+        /* --- SERVICES SECTION STYLES --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            transition: background-color 0.3s, border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            background-color: var(--secondary-card-bg); 
+            border-color: var(--neon-cyan);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
+        }
+
+        .service-card i {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            display: block;
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        .service-card h3 {
+            color: var(--dark-text);
+            margin-bottom: 10px;
+        }
+
+        .service-card ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: #A0A0B0;
+        }
+
+        /* --- PROJECTS SECTION STYLES --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(157, 60, 255, 0.2);
+            position: relative;
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: auto;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px); 
+            box-shadow: 0 15px 30px rgba(157, 60, 255, 0.4);
+        }
+
+        .project-card h3 {
+            color: var(--neon-cyan);
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            font-size: 0.95em;
+            margin-bottom: 20px;
+        }
+
+        .tech-tags span {
+            display: inline-block;
+            background-color: #2D144A;
+            color: var(--neon-purple);
+            font-size: 0.8em;
+            padding: 5px 10px;
+            border-radius: 4px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            border: 1px solid var(--neon-purple);
+        }
+
+        .project-links {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed rgba(157, 60, 255, 0.2);
+        }
+
+        .project-links a {
+            text-decoration: none;
+            color: var(--neon-cyan);
+            margin-right: 20px;
+            font-weight: bold;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+
+        .project-links a:hover {
+            text-shadow: 0 0 8px var(--neon-cyan);
+        }
+
+        .view-all-btn {
+            display: block;
+            width: 350px;
+            margin: 50px auto 0;
+            text-align: center;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+            text-align: center;
+        }
+        
+        /* --- CONTACT SECTION STYLES --- */
+        .contact-container {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-info-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .info-card {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 5px solid var(--neon-purple);
+            display: flex;
+            align-items: center;
+            text-decoration: none; 
+            color: var(--dark-text);
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 255, 255, 0.4);
+            border-left-color: var(--neon-cyan);
+        }
+
+        .info-card i {
+            font-size: 1.5em;
+            margin-right: 15px;
+            color: var(--neon-cyan);
+        }
+
+        /* NEW BIG CONTACT BUTTON STYLE */
+        .btn-full-contact {
+            display: block;
+            width: 100%;
+            max-width: 400px;
+            margin: 40px auto 0;
+            padding: 20px;
+            font-size: 1.4em;
+            text-decoration: none;
+            background-color: var(--neon-cyan);
+            color: var(--dark-bg);
+            border-radius: 12px;
+            font-weight: bold;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-full-contact:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 35px var(--neon-cyan);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9em;
+            border-top: 1px solid rgba(157, 60, 255, 0.2);
+            margin-top: 50px;
+        }
+        
+        /* Media Queries for Responsiveness */
+        @media (max-width: 1024px) {
+            .hero { flex-direction: column; text-align: center; padding-top: 80px; }
+            .hero-content { max-width: 100%; }
+            .hero-image { width: 60%; margin-top: 40px; }
+            .skills-grid, .services-grid { grid-template-columns: 1fr; }
+            .projects-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        
+        @media (max-width: 600px) {
+            .projects-grid { grid-template-columns: 1fr; }
+            header nav { display: none; }
+            .logo { font-size: 1.8em; }
+            .btn-full-contact { max-width: 90%; }
+        }
+
+        /* --- MODAL STYLES --- */
+        .modal {
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: none; /* Hidden by default */
+            padding-top: 50px;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            margin: 5% auto;
+            padding: 30px;
+            border: 3px solid var(--neon-purple);
+            border-radius: 15px;
+            width: 80%;
+            max-width: 800px;
+            box-shadow: 0 0 40px rgba(157, 60, 255, 0.7);
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .close-button {
+            color: var(--neon-cyan);
+            float: right;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: var(--neon-purple);
+        }
+
+        #modalTitle {
+            color: var(--neon-cyan);
+            font-size: 1.8em;
+            margin-bottom: 5px;
+        }
+
+        .modal-role {
+            font-style: italic;
+            color: #A0A0B0;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .modal-content h4 {
+            color: var(--neon-purple);
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(157, 60, 255, 0.3);
+            padding-bottom: 5px;
+        }
+
+        #modalSkills {
+            padding-left: 20px;
+            list-style: disc;
+            color: var(--dark-text);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">RM</div>
+        <nav>
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#services">Services</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact" class="btn-contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <p class="welcome-text">WELCOME TO MY TECH WORLD 💡</p>
+                <h1>Hi, I'm **Mohanprashad R**</h1>
+                <h2 class="neon-cyan">IoT & AI Innovator / Embedded Systems Specialist</h2>
+                <p>Passionate technologist specializing in creating **cost-effective, real-world solutions** in IoT, AI, and smart systems. I transform complex data into reliable, automated, and impactful digital experiences.</p>
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn-primary">View Projects</a>
+                    <a href="**REPLACE_WITH_YOUR_CV_LINK.pdf**" class="btn-secondary" target="_blank">Download CV</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://linkedin.com/in/mohanprashad-r-37b0b5391" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/Mohanprashad2005" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://instagram.com/mohan_mano.r" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <!-- NOTE: Local file paths (C:\...) are blocked by browser security and WILL NOT LOAD for you or others. -->
+                <!-- To make your photo visible, you must upload it to a public hosting service (like Imgur) and use that public URL. -->
+                <img src="C:\Users\HP\Pictures\abc.png" 
+                     alt="R. Mohanprashad Profile" 
+                     class="profile-pic"
+                     onerror="this.onerror=null; this.src='https://placehold.co/400x400/150825/E0E0FF?text=RM+Profile';"
+                >
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="about" class="section-padding fly-in">
+            <h2>About Me</h2>
+            <p class="subtitle">My journey in tech is driven by hands-on innovation and a commitment to real-world impact.</p>
+            
+            <!-- NEW: Philosophy Quote - Made Bigger -->
+            <div class="philosophy-quote">
+                "Never lose, either I win or learn"
+            </div>
+            
+            <div style="max-width: 900px; margin: 0 auto; font-size: 1.1em; text-align: center;">
+                <p style="margin-bottom: 25px;">I am a fervent technologist currently pursuing my **B.Tech in AI & Data Science** at Grace College of Engineering (2023–2027). My passion lies in bridging the gap between hardware and software to deliver reliable and cost-effective **IoT, AI, and embedded systems** solutions.</p>
+                <p style="margin-bottom: 25px; color: var(--neon-cyan);">**Philosophy:** I strive to create solutions that are not only technically sound but also user-friendly and cost-effective, making innovation accessible to everyone.</p>
+                <p>I thrive on hands-on experimentation, from training a **TinyML model on Edge Impulse** for helmet detection to integrating complex sensor arrays for real-time monitoring and safety applications.</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="skills" class="section-padding fly-in">
+            <h2>Skills & Expertise</h2>
+            <p class="subtitle">A comprehensive toolkit for building innovative IoT and AI solutions</p>
+
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <div class="category-header"><i class="fas fa-code"></i> Programming & Software</div>
+                    <div class="skill-item">Python <div class="progress-bar"><div style="width: 90%;"></div></div></div>
+                    <div class="skill-item">C/C++ <div class="progress-bar"><div style="width: 85%;"></div></div></div>
+                    <div class="skill-item">Embedded C <div class="progress-bar"><div style="width: 80%;"></div></div></div>
+                    <div class="skill-item">Arduino <div class="progress-bar"><div style="width: 88%;"></div></div></div>
+                    <div class="skill-item">MicroPython <div class="progress-bar"><div style="width: 75%;"></div></div></div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="category-header"><i class="fas fa-microchip"></i> IoT & Embedded Systems</div>
+                    <div class="skill-item">ESP32/ESP32-CAM <div class="progress-bar"><div style="width: 92%;"></div></div></div>
+                    <div class="skill-item">Arduino Boards <div class="progress-bar"><div style="width: 90%;"></div></div></div>
+                    <div class="skill-item">Sensors Integration <div class="progress-bar"><div style="width: 88%;"></div></div></div>
+                    <div class="skill-item">UHF RFID <div class="progress-bar"><div style="width: 82%;"></div></div></div>
+                    <div class="skill-item">Real-time Systems <div class="progress-bar"><div style="width: 85%;"></div></div></div>
+                </div>
+                
+                <div class="skill-category">
+                    <div class="category-header"><i class="fas fa-brain"></i> AI & Machine Learning</div>
+                    <div class="skill-item">Edge Impulse <div class="progress-bar"><div style="width: 85%;"></div></div></div>
+                    <div class="skill-item">OpenCV <div class="progress-bar"><div style="width: 82%;"></div></div></div>
+                    <div class="skill-item">YOLOv8 <div class="progress-bar"><div style="width: 78%;"></div></div></div>
+                    <div class="skill-item">TensorFlow Basics <div class="progress-bar"><div style="width: 70%;"></div></div></div>
+                    <div class="skill-item">scikit-learn <div class="progress-bar"><div style="width: 80%;"></div></div></div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="category-header"><i class="fas fa-chart-bar"></i> Data Analytics</div>
+                    <div class="skill-item">Excel Advanced <div class="progress-bar"><div style="width: 88%;"></div></div></div>
+                    <div class="skill-item">Pandas <div class="progress-bar"><div style="width: 85%;"></div></div></div>
+                    <div class="skill-item">Matplotlib <div class="progress-bar"><div style="width: 82%;"></div></div></div>
+                    <div class="skill-item">Power BI <div class="progress-bar"><div style="width: 80%;"></div></div></div>
+                    <div class="skill-item">Cloud Analytics <div class="progress-bar"><div style="width: 75%;"></div></div></div>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="services" class="section-padding fly-in">
+            <h2>Services I Offer</h2>
+            <p class="subtitle">Comprehensive solutions from concept to deployment</p>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-microchip"></i>
+                    <h3>IoT & Embedded Systems</h3>
+                    <p>Develop smart devices, real-time monitoring, industrial automation, and safety applications.</p>
+                    <ul><li>Smart Devices & Prototyping</li><li>Real-time Monitoring</li><li>Hardware-Software Integration</li></ul>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>AI & ML Applications</h3>
+                    <p>Implement computer vision solutions like helmet detection, face recognition, and predictive analysis.</p>
+                    <ul><li>Helmet/Object Detection</li><li>Sleep/Fatigue Alert Systems</li><li>Edge AI Deployment (TinyML)</li></ul>
+                </div>
+                
+                <div class="service-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Data Analytics & Visualization</h3>
+                    <p>Transform raw data into actionable insights with interactive dashboards, reports, and cloud-based analytics solutions.</p>
+                    <ul><li>Interactive Dashboards</li><li>Cloud Analytics</li><li>Data Processing</li></ul>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-globe"></i>
+                    <h3>Web Development</h3>
+                    <p>Create responsive web applications and interactive dashboards with modern frameworks and clean UI/UX design.</p>
+                    <ul><li>Interactive Dashboards</li><li>Web Applications</li><li>UI/UX Support</li></ul>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-cogs"></i>
+                    <h3>Project Consultation</h3>
+                    <p>Expert guidance on hardware-software integration, system architecture, and prototyping for your innovative ideas.</p>
+                    <ul><li>System Architecture</li><li>Hardware-Software Integration</li><li>Technical Consulting</li></ul>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-palette"></i>
+                    <h3>Creative & Communication</h3>
+                    <p>Professional presentations, project documentation, and visual communication materials for your technical projects.</p>
+                    <ul><li>Technical Documentation</li><li>Presentations & Visual Design</li><li>Project Reports</li></ul>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="projects" class="section-padding fly-in">
+            <h2>Featured Projects</h2>
+            <p class="subtitle">Innovative solutions combining IoT, AI, and embedded systems</p>
+
+            <div class="projects-grid">
+                <!-- Project 1: Smart Helmet -->
+                <div class="project-card">
+                    <h3>Smart Helmet with AI Detection</h3>
+                    <p>IoT safety system with ESP32, sensors for motion/impact detection, and on-device AI for helmet usage.</p>
+                    <div class="tech-tags">
+                        <span>ESP32</span><span>Edge Impulse</span><span>Gyroscope</span><span>IoT</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="view-details-btn" data-project-id="P1"><i class="fas fa-external-link-alt"></i> View Details</a>
+                        <a href="https://github.com/Mohanprashad2005" target="_blank"><i class="fas fa-code"></i> Code</a>
+                    </div>
+                </div>
+                
+                <!-- Project 2: RF Attendance -->
+                <div class="project-card">
+                    <h3>Smart ID: RF Attendance System</h3>
+                    <p>Developed a low-cost, scalable automatic attendance solution using RF transmitter tags assigned to students.</p>
+                    <div class="tech-tags">
+                        <span>Arduino</span><span>433MHz RF</span><span>Unique ID System</span><span>IoT</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="view-details-btn" data-project-id="P2"><i class="fas fa-external-link-alt"></i> View Details</a>
+                        <a href="https://github.com/Mohanprashad2005" target="_blank"><i class="fas fa-code"></i> Code</a>
+                    </div>
+                </div>
+
+                <!-- Project 3: Face Recognition -->
+                <div class="project-card">
+                    <h3>Face Recognition Attendance System</h3>
+                    <p>Live video-based attendance system using ESP32-CAM and computer vision to detect and log attendance automatically.</p>
+                    <div class="tech-tags">
+                        <span>ESP32-CAM</span><span>Python</span><span>OpenCV</span><span>Flask</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="view-details-btn" data-project-id="P3"><i class="fas fa-external-link-alt"></i> View Details</a>
+                        <a href="https://github.com/Mohanprashad2005" target="_blank"><i class="fas fa-code"></i> Code</a>
+                    </div>
+                </div>
+                
+                <!-- Project 4: Alcohol Detection -->
+                <div class="project-card">
+                    <h3>Alcohol Detection & Alert System</h3>
+                    <p>Sensor-based rider safety system sending automated WhatsApp alerts when alcohol consumption is detected.</p>
+                    <div class="tech-tags">
+                        <span>MQ-3/MQ-135</span><span>IoT Alerts</span><span>WhatsApp API</span><span>Embedded C</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="view-details-btn" data-project-id="P4"><i class="fas fa-external-link-alt"></i> View Details</a>
+                        <a href="https://github.com/Mohanprashad2005" target="_blank"><i class="fas fa-code"></i> Code</a>
+                    </div>
+                </div>
+
+                 <!-- Project 5: Google Sheets Attendance -->
+                <div class="project-card">
+                    <h3>Lab Attendance System using Google Sheets</h3>
+                    <p>IoT system logging student entries directly into Google Sheets using automated data transfer and unique ID authentication.</p>
+                    <div class="tech-tags">
+                        <span>ESP32</span><span>Google Sheets API</span><span>Python</span><span>Cloud Integration</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="view-details-btn" data-project-id="P5"><i class="fas fa-external-link-alt"></i> View Details</a>
+                        <a href="https://github.com/Mohanprashad2005" target="_blank"><i class="fas fa-code"></i> Code</a>
+                    </div>
+                </div>
+                
+                <div class="full-width">
+                    <a href="https://github.com/Mohanprashad2005" target="_blank" class="btn-primary view-all-btn">
+                        <i class="fas fa-external-link-alt"></i> View All Projects on GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="contact" class="section-padding fly-in">
+            <h2>Get In Touch</h2>
+            <p class="subtitle">Have a project in mind? Let's discuss how we can work together</p>
+            
+            <div class="contact-container">
+                <p style="margin-bottom: 25px;">**Let's Connect**</p>
+                
+                <!-- INTERACTIVE CONTACT CARDS -->
+                <div class="contact-info-cards">
+                    <a href="mailto:mohanprashad2005@gmail.com" class="info-card" target="_blank">
+                        <i class="fas fa-envelope"></i> mohanprashad2005@gmail.com
+                    </a>
+                    <a href="tel:+919944406813" class="info-card" target="_blank">
+                        <i class="fas fa-phone"></i> +91 9944406813
+                    </a>
+                    <a href="https://linkedin.com/in/mohanprashad-r-37b0b5391" class="info-card" target="_blank">
+                        <i class="fab fa-linkedin"></i> mohanprashad-r-37b0b5391
+                    </a>
+                    <a href="https://github.com/Mohanprashad2005" class="info-card" target="_blank">
+                        <i class="fab fa-github"></i> Mohanprashad2005
+                    </a>
+                </div>
+
+                <!-- NEW BIG CONTACT BUTTON - REMOVES FORM FIELDS -->
+                <a href="https://docs.google.com/forms/d/1xkY1X1HjwZX14sgYmEE-bjcMqUd-WPzisKevGgZXPkM/viewform?usp=sf_link" target="_blank" class="btn-full-contact">
+                    <i class="fas fa-paper-plane"></i> Contact Me Directly
+                </a>
+
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>© 2025 R. Mohanprashad. All rights reserved. | Built with ❤️ and cutting-edge tech</p>
+    </footer>
+
+    <!-- Project Detail Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3 id="modalTitle"></h3>
+            <p class="modal-role" id="modalRole"></p>
+            <div class="modal-tags tech-tags" id="modalTech"></div>
+            <h4>Description</h4>
+            <p id="modalDescription"></p>
+            <h4>Key Skills Learned</h4>
+            <ul id="modalSkills"></ul>
+        </div>
+    </div>
+
+    <script>
+        // Data store for projects (including detailed descriptions and skills)
+        const projectData = [
+            {
+                id: "P1",
+                title: "Smart Helmet with AI Detection",
+                role: "Role: Developer",
+                tech: ["ESP32", "ESP32-CAM", "Edge Impulse", "Gyroscope", "FSR", "ADXL337"],
+                description: "Designed a smart helmet safety system that detects helmet usage using sensor feedback and on-device AI. Integrated accident detection using motion and impact sensors. System automatically sends emergency alerts with real-time location sharing to contacts, improving road safety for riders.",
+                skills: ["Embedded Systems (ESP32 / ESP-NOW)", "Edge AI Deployment (Edge Impulse)", "Sensor Fusion & Accident Detection Logic", "Real-time Communication (Alerts + GPS)", "C/C++ Microcontroller Programming", "Hardware Prototyping & Testing"]
+            },
+            {
+                id: "P2",
+                title: "Smart ID: RF Attendance System",
+                role: "Role: IoT System Designer",
+                tech: ["Arduino", "ESP32", "433MHz RF Modules", "Unique ID System"],
+                description: "Developed a low-cost, scalable automatic attendance solution using RF transmitter tags assigned to students. Each tag broadcasts a unique ID with random delay to prevent collision. The receiver logs attendance in real-time at the college entrance and eliminates duplicate scans.",
+                skills: ["IoT Hardware Communication (RF)", "Unique ID Mapping & Debounce Logic", "Data Logging & Microcontroller Programming", "System Optimization for Large-Scale Deployment"]
+            },
+            {
+                id: "P3",
+                title: "Face Recognition Attendance System",
+                role: "Role: Software Developer",
+                tech: ["ESP32-CAM", "Python", "OpenCV", "Flask", "face_recognition"],
+                description: "Created a live video-based attendance automation system using face recognition. ESP32-CAM streams video to a PC, where the system detects and identifies registered individuals and logs attendance automatically into a database with web visualization support.",
+                skills: ["Computer Vision (OpenCV)", "Face Recognition (Deep Learning Models)", "Web Streaming & Flask Integration", "Database Logging & UI Display Automation", "Python Application Development"]
+            },
+            {
+                id: "P4",
+                title: "Alcohol Detection & Alert System",
+                role: "Role: Embedded Developer",
+                tech: ["MQ-3/MQ-135 Sensor", "IoT Alerts", "WhatsApp API", "Embedded C"],
+                description: "Engineered a rider safety system that detects alcohol consumption through gas sensing. When threshold levels exceed, automatic WhatsApp alerts are sent to emergency contacts to prevent potential accidents and enforce safe driving.",
+                skills: ["Gas Sensor Integration (MQ-Series)", "IoT Alert Automation using WhatsApp API", "Embedded C Programming", "Safety-driven IoT Product Design"]
+            },
+            {
+                id: "P5",
+                title: "Lab Attendance System using Google Sheets",
+                role: "Role: Developer",
+                tech: ["ESP32/ESP8266", "Google Sheets API", "QR Code / Unique ID System", "Wi-Fi", "Python"],
+                description: "Implemented a smart lab attendance system that logs student entries directly into Google Sheets using automated IoT data transfer. The system authenticates students through unique IDs or QR scanning and updates date and time in real time, ensuring accurate and accessible cloud-based attendance records.",
+                skills: ["Cloud Integration (Google Sheets API)", "Real-time IoT Data Logging and Automation", "Python + Microcontroller Communication", "Data Handling, Time-stamping & Verification", "Smart Lab Automation System Design"]
+            }
+        ];
+
+        // Function to handle showing project details
+        function showProjectDetails(projectId) {
+            const project = projectData.find(p => p.id === projectId);
+            const modal = document.getElementById('projectModal');
+            
+            if (project) {
+                document.getElementById('modalTitle').textContent = project.title;
+                document.getElementById('modalRole').textContent = project.role;
+                document.getElementById('modalDescription').textContent = project.description;
+
+                // Populate Tech Tags
+                const techContainer = document.getElementById('modalTech');
+                techContainer.innerHTML = project.tech.map(tag => `<span>${tag}</span>`).join(''); 
+                
+                // Populate Skills List
+                const skillsList = document.getElementById('modalSkills');
+                skillsList.innerHTML = project.skills.map(skill => `<li>${skill}</li>`).join('');
+
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // Prevent scrolling background
+            }
+        }
+        
+        // Function to close the modal
+        function closeProjectModal() {
+            const modal = document.getElementById('projectModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling background
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // 💡 Function for Dynamic Background Change (Violent Color Shifting)
+            function startDynamicBackground() {
+                const body = document.body;
+                // Subtle rotation between dark purple variations for the "violent" effect
+                const colors = [
+                    'var(--dark-bg)', // Base color: #10051C
+                    'var(--secondary-card-bg)', // Slightly lighter purple: #200E3A
+                    '#150825' // Darker purple for deep effect
+                ];
+                let currentIndex = 0;
+
+                setInterval(() => {
+                    body.style.backgroundColor = colors[currentIndex];
+                    currentIndex = (currentIndex + 1) % colors.length;
+                }, 4000); // Change every 4 seconds
+            }
+
+            startDynamicBackground();
+
+            // --- Scroll Animation (Intersection Observer) ---
+            const flyInElements = document.querySelectorAll('.fly-in');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                rootMargin: '0px',
+                threshold: 0.2 
+            });
+
+            flyInElements.forEach(element => {
+                observer.observe(element);
+            });
+            // --- End Scroll Animation ---
+
+            // Attach event listeners for the "View Details" buttons
+            document.querySelectorAll('.view-details-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const projectId = button.getAttribute('data-project-id');
+                    showProjectDetails(projectId);
+                });
+            });
+
+            // Logic to close the modal
+            document.querySelector('.close-button').onclick = closeProjectModal;
+
+            // Close modal if user clicks outside of it
+            window.onclick = function(event) {
+                const modal = document.getElementById('projectModal');
+                if (event.target == modal) {
+                    closeProjectModal();
+                }
+            }
+
+            // Simple smooth scrolling for navigation
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    // Only run smooth scroll for internal links
+                    if (this.getAttribute('href').startsWith('#')) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href');
+                        document.querySelector(targetId).scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                        
+                        // Update active state
+                        document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
+                        this.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
